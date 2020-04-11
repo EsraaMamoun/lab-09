@@ -1,5 +1,9 @@
 'use strict';
 
+const superagent = require('superagent');
+require('dotenv').config();
+const handler = require('../handler.js');
+
 function Weather(darkskyData) {
     this.forecast = darkskyData.weather.description;
     this.time = (new Date(darkskyData.valid_date)).toDateString();
@@ -12,7 +16,7 @@ function weatherHandler(request, response) {
             return new Weather(darkskyData);
         });
         response.status(200).json(theWeather);
-    }).catch((err) => errorHandler(err, request, response));
+    }).catch((err) => handler.errorHandler(err, request, response));
 }
 
 module.exports = weatherHandler;

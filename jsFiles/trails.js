@@ -1,7 +1,8 @@
 'use strict';
 
-const client = require('./client');
-const handler = require('./handler');
+const superagent = require('superagent');
+require('dotenv').config();
+const handler = require('../handler.js');
 
 function Tralis(theTrails) {
     this.name = theTrails.name;
@@ -23,7 +24,7 @@ function trailsHandler(request, response) {
             return new Tralis(theTrails);
         });
         response.status(200).json(trailsData);
-    }).catch((err) => errorHandler(err, request, response));
+    }).catch((err) => handler.errorHandler(err, request, response));
 }
 
 module.exports = trailsHandler;
