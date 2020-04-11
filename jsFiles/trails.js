@@ -1,7 +1,7 @@
 'use strict';
 
-const client = require('./client');
-const handler = require('./handler');
+const superagent = require('superagent');
+require('dotenv').config();
 
 function Tralis(theTrails) {
     this.name = theTrails.name;

@@ -1,5 +1,8 @@
 'use strict';
 
+const superagent = require('superagent');
+require('dotenv').config();
+
 function Weather(darkskyData) {
     this.forecast = darkskyData.weather.description;
     this.time = (new Date(darkskyData.valid_date)).toDateString();

@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 function render(data, response) {
     response.status(200).json(data);
 }
