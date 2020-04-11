@@ -2,6 +2,7 @@
 
 const superagent = require('superagent');
 require('dotenv').config();
+const handler = require('../handler.js');
 
 function Movies(movie) {
     this.title = movie.title;
@@ -21,7 +22,7 @@ function moviesHandler(request, response) {
                 return new Movies(movie);
             });
             response.status(200).json(moviesData);
-        }).catch((err) => errorHandler(err, request, response));
+        }).catch((err) => handler.errorHandler(err, request, response));
 }
 
 

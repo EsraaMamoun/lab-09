@@ -2,6 +2,10 @@
 
 const superagent = require('superagent');
 require('dotenv').config();
+const handler = require('../handler.js');
+// const pg = require('pg');
+// const client = new pg.Client(process.env.DATABASE_URL);
+const client = require('../client.js');
 
 function Location(city, geoData) {
     this.search_query = city;
@@ -31,7 +35,7 @@ function locationHandler(request, response) {
                     response.status(500).send(err);
                 })
             }).catch((err) => {
-                errorHandler(err, request, response);
+                handler.errorHandler(err, request, response);
             });
         }
     });

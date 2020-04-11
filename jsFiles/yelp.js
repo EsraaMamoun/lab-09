@@ -2,6 +2,7 @@
 
 const superagent = require('superagent');
 require('dotenv').config();
+const handler = require('../handler.js');
 
 function Yelp(yelp) {
     this.name = yelp.name;
@@ -20,7 +21,7 @@ function yelpHandler(request, response) {
                 return new Yelp(yelp);
             });
             response.status(200).json(yelpData);
-        }).catch((err) => errorHandler(err, request, response));
+        }).catch((err) => handler.errorHandler(err, request, response));
 }
 
 
